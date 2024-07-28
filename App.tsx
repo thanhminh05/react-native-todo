@@ -1,13 +1,55 @@
-import { useState } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
-  const [name, setName] = useState('');
+  const students = [
+    {
+      id: 1,
+      name: 'Minh',
+    },
+    {
+      id: 2,
+      name: 'Minh',
+    },
+    {
+      id: 3,
+      name: 'Minh',
+    },
+    {
+      id: 4,
+      name: 'Minh',
+    },
+    {
+      id: 5,
+      name: 'Minh',
+    },
+    {
+      id: 6,
+      name: 'Minh',
+    },
+    {
+      id: 7,
+      name: 'Minh',
+    },
+  ];
 
   return (
     <View style={styles.container}>
-      <TextInput value={name} onChangeText={(newText) => setName(newText)} style={{ borderWidth: 1, width: 300 }} />
-      <Text style={{ fontSize: 40, fontWeight: '600' }}>My name is {name}</Text>
+      <FlatList
+        keyExtractor={(item) => item.id + ''}
+        data={students}
+        renderItem={({ item }) => (
+          <View>
+            <Text style={{ paddingVertical: 80 }}>{item.name}</Text>
+          </View>
+        )}
+      />
+      {/* <ScrollView>
+        {students.map((item, index) => (
+          <Text key={index} style={{ marginVertical: 30 }}>
+            {item}
+          </Text>
+        ))}
+      </ScrollView> */}
     </View>
   );
 }
@@ -15,8 +57,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 50,
+    paddingHorizontal: 20,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
