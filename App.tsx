@@ -1,16 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
+  const [name, setName] = useState('');
+
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.header}>Minh</Text>
-        <Text style={styles.parent}>
-          Balaaa <Text style={styles.header}>Minh</Text>
-        </Text>
-      </View>
-      <Text style={styles.hello1}>Hello World</Text>
-      <Text>Hello World 2222</Text>
+      <TextInput value={name} onChangeText={(newText) => setName(newText)} style={{ borderWidth: 1, width: 300 }} />
+      <Text style={{ fontSize: 40, fontWeight: '600' }}>My name is {name}</Text>
     </View>
   );
 }
@@ -21,14 +18,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  hello1: { color: 'red', fontSize: 60, borderColor: 'green', borderWidth: 1, padding: 10 },
-  header: {
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
-  parent: {
-    fontSize: 60,
-    color: 'green',
   },
 });
